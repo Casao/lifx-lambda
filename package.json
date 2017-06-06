@@ -1,7 +1,7 @@
 {
-  "name": "node-lambda-template",
+  "name": "lifx-lambda",
   "version": "0.0.2",
-  "description": "The bare minimum for a node.js app running on Amazon Lambda. Uses node-lambda under the hood to locally run and also deploy your node.js Amazon Lambda application.",
+  "description": "LIFX Lambda bedside lamp toggle",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -21,5 +21,8 @@
   },
   "devDependencies": {
     "node-lambda": "^0.9.0"
+  },
+  "dependencies": {
+    "lifx-http-api": "^1.0.3"
   }
 }

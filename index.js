@@ -1,11 +1,38 @@
+const lifxObj = require('lifx-http-api');
+const lifx = new lifxObj({ bearerToken: process.env.LIFX_KEY });
+
+const states = [
+  {
+    "brightness": 1.0,
+    "color": "kelvin:3200"
+  },
+  {
+    "brightness": 0.5,
+    "color": "kelvin:2750"
+  }
+]
+
+const defaults = {
+  "power": "on",
+  "color": "saturation:0",
+  "duration": 2.0
+}
+
+const target = `id:${process.env.TARGET_ID}`
+
 // For development/testing purposes
 exports.handler = function(event, context, callback) {
-  console.log('Running index.handler');
-  console.log('==================================');
-  console.log('event', event);
-  console.log('==================================');
-  console.log('Stopping index.handler');
-  callback(null, event);
-  // or
-  // callback( 'some error type' );
+  // lifx.togglePower(`id:${process.env.TARGET_ID}`, 0, (err, toggleRes) => {
+  //   callback(err, toggleRes);
+  // });
+
+  if (event.clickType === 'LONG') {
+    lifx.togglePower(target, 0, callback)
+  } 
+  else if (event.clickType === 'SINGLE') {
+    lifx.cycle(target, { states: states, defaults: defaults }, callback);
+  }
+  else if (event.clickType === 'DOUBLE') {
+    lifx.setState(target, { color: 'red brightness:0.1' }, callback);
+  }
 };
