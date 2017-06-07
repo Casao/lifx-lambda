@@ -7,25 +7,21 @@ const states = [
     "color": "kelvin:3200"
   },
   {
-    "brightness": 0.5,
+    "brightness": 0.3,
     "color": "kelvin:2750"
   }
-]
+];
 
 const defaults = {
   "power": "on",
   "color": "saturation:0",
   "duration": 2.0
-}
+};
 
-const target = `id:${process.env.TARGET_ID}`
+const target = `id:${process.env.TARGET_ID}`;
 
 // For development/testing purposes
 exports.handler = function(event, context, callback) {
-  // lifx.togglePower(`id:${process.env.TARGET_ID}`, 0, (err, toggleRes) => {
-  //   callback(err, toggleRes);
-  // });
-
   if (event.clickType === 'LONG') {
     lifx.togglePower(target, 0, callback)
   } 
