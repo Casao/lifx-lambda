@@ -3,7 +3,7 @@ const lifx = new lifxObj({ bearerToken: process.env.LIFX_KEY });
 
 const states = [
   {
-    "brightness": 1.0,
+    "brightness": 0.5,
     "color": "kelvin:3200"
   },
   {
