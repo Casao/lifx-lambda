@@ -7,7 +7,7 @@ const states = [
     "color": "kelvin:3200"
   },
   {
-    "brightness": 0.3,
+    "brightness": 0.15,
     "color": "kelvin:2750"
   }
 ];
