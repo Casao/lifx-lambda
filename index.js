@@ -1,16 +1,15 @@
 const lifxObj = require('lifx-http-api');
 const lifx = new lifxObj({ bearerToken: process.env.LIFX_KEY });
 
-const states = [
-  {
-    "brightness": 0.5,
-    "color": "kelvin:3200"
-  },
-  {
+const bedTimeLight = {
     "brightness": 0.15,
     "color": "kelvin:2750"
-  }
-];
+};
+
+const dayTimeLight = {
+  "brightness": 1,
+  "color": "kelvin:5500"
+}
 
 const defaults = {
   "power": "on",
@@ -26,9 +25,9 @@ exports.handler = function(event, context, callback) {
     lifx.togglePower(target, 0, callback)
   } 
   else if (event.clickType === 'SINGLE') {
-    lifx.cycle(target, { states: states, defaults: defaults }, callback);
+    lifx.setState(target, bedTimeLight, callback);
   }
   else if (event.clickType === 'DOUBLE') {
-    lifx.setState(target, { color: 'red brightness:0.1' }, callback);
+    lifx.setState(target, dayTimeLight, callback);
   }
 };
