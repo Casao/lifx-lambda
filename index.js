@@ -2,19 +2,15 @@ const lifxObj = require('lifx-http-api');
 const lifx = new lifxObj({ bearerToken: process.env.LIFX_KEY });
 
 const bedTimeLight = {
-    "brightness": 0.15,
-    "color": "kelvin:2750"
+  "power": "on",
+  "brightness": 0.15,
+  "color": "kelvin:2750"
 };
 
 const dayTimeLight = {
+  "power": "on",  
   "brightness": 1,
   "color": "kelvin:5500"
-}
-
-const defaults = {
-  "power": "on",
-  "color": "saturation:0",
-  "duration": 2.0
 };
 
 const target = `id:${process.env.TARGET_ID}`;
